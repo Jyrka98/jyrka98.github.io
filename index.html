@@ -7,170 +7,123 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,800,800i" rel="stylesheet" />
     <meta charset="utf-8" />
     <meta http-equiv="Cache-Control" content="no-store" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"
-        integrity="sha256-+u54FaX9J+k40eAcg5K2YzICSQjrEYBI9gju5nE3HfY=" crossorigin="anonymous">
-        </script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.2.4/tsparticles.bundle.min.js"
+        integrity="sha256-xvU+zV+BBXwwET4u26/zoXnrV6q8kkTaMI5e3xixf40=" crossorigin="anonymous"></script>
 
     <style type="text/css">
-        * {
+        html,
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: #1a1a1a;
             font-family: 'Open Sans';
-        }
-
-        body,
-        html {
-            height: 100%;
             margin: 0;
-            overflow: hidden;
             padding: 0;
-            width: 100%;
+            overflow: hidden;
         }
 
-        body,
-        html {
-            background-color: #1a1a1a;
-        }
-
-        .text {
-            color: white;
-        }
-
-        .unselectable {
-            -moz-user-select: none;
-            -ms-user-select: none;
-            -webkit-user-select: none;
+        #tsparticles {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            margin: 0;
+            user-select: none;
             pointer-events: none;
-        }
-
-        ::selection {
-            background-color: rgba(190, 189, 208, 1);
-            color: white;
-        }
-
-        #wrapper {
-            height: 100%;
-            width: 100%;
-            z-index: -100;
-        }
-
-        div.layer {
-            height: 100%;
-            position: absolute;
-            text-align: center;
-            width: 100%;
-        }
-
-        div.layer1 {
-            background-color: #1a1a1a;
-            z-index: 0;
-        }
-
-        div.layer2 {
-            background-color: transparent;
-            z-index: 1;
-        }
-
-        div.layer3 {
-            background-color: #1a1a1a;
-            z-index: 2;
         }
     </style>
 </head>
 
 <body>
-    <div id="wrapper">
-        <div id="particles-js" class="layer layer1">
-        </div>
-        <div id="mainContent" class="layer layer2">
-            
-        </div>
+    <div id="tsparticles">
     </div>
     <script>
-        particlesJS("particles-js",
-            {
-                particles: {
-                    number: {
-                        value: 80,
-                        density: {
-                            enable: true,
-                            value_area: 800
-                        }
-                    },
-                    color: {
-                        value: ["#0060ff", "#ffffff"]
-                    },
-                    shape: {
-                        type: ["circle"]
-                    },
-                    opacity: {
-                        value: 0.5,
-                        random: false,
-                        anim: {
-                            enable: false,
-                            speed: 1,
-                            opacity_min: 0.1,
-                            sync: false
-                        }
-                    },
-                    size: {
-                        value: 3,
-                        random: true,
-                        anim: {
-                            enable: false,
-                            speed: 40,
-                            size_min: 0.1,
-                            sync: false
-                        }
-                    },
-                    line_linked: {
+        const particlesConfig = {
+            interactivity: {
+                detectsOn: "window",
+                events: {
+                    onHover: {
                         enable: true,
-                        distance: 200,
-                        color: "#ffffff",
-                        opacity: 0.4,
-                        width: 1
+                        mode: "bubble"
                     },
-                    move: {
+                    onClick: {
+                        enable: false,
+                        mode: "repulse"
+                    },
+                    resize: true
+                },
+                modes: {
+                    bubble: {
+                        distance: 300,
+                        size: 30,
+                        duration: 2,
+                        opacity: 8,
+                        speed: 3
+                    }
+                }
+            },
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
                         enable: true,
-                        speed: 6,
-                        direction: "none",
-                        random: false,
-                        straight: false,
-                        out_mode: "out",
-                        bounce: false,
-                        attract: {
-                            enable: false,
-                            rotateX: 600,
-                            rotateY: 1200
-                        }
+                        valueArea: 800
                     }
                 },
-                interactivity: {
-                    detect_on: "window",
-                    events: {
-                        onhover: {
-                            enable: true,
-                            mode: "bubble"
-                        },
-                        onclick: {
-                            enable: false,
-                            mode: "repulse"
-                        },
-                        resize: true
-                    },
-                    modes: {
-                        bubble: {
-                            distance: 300,
-                            size: 30,
-                            duration: 2,
-                            opacity: 8,
-                            speed: 3
-                        }
+                color: {
+                    value: ["#0060ff", "#ffffff"]
+                },
+                shape: {
+                    type: ["circle"]
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                    anim: {
+                        enable: false,
+                        speed: 1,
+                        opacityMin: 0.1,
+                        sync: false
                     }
                 },
-                retina_detect: true
-            });
+                size: {
+                    value: 3,
+                    random: true,
+                    anim: {
+                        enable: false,
+                        speed: 40,
+                        sizeMin: 0.1,
+                        sync: false
+                    }
+                },
+                lineLinked: {
+                    enable: true,
+                    distance: 200,
+                    color: "#ffffff",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 6,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    outMode: "out",
+                    bounce: false,
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            detectRetina: true
+        };
+
+        tsParticles.load("tsparticles", particlesConfig);
     </script>
 </body>
 
